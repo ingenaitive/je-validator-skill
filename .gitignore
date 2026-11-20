@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 validation_report.csv
 je_import_ready.csv
+venv/
