@@ -37,14 +37,24 @@ No registration step — Claude Code auto-discovers skills in those locations. I
 
 ### Option 2: Claude Desktop app / claude.ai (web)
 
-claude.ai supports uploading custom Skills in this same format:
+claude.ai and the Claude Desktop app support uploading custom Skills in this same format.
 
-1. Zip this skill folder (`SKILL.md` must sit at the top level inside the zip).
-2. In claude.ai: **Customize → Skills → + → Create skill → Upload**, and select the zip.
-3. Enable **Settings → Capabilities → "Create and edit files"** (code execution) — required for the skill to actually run.
-4. Available on Free/Pro/Max/Ultra/Team/Enterprise plans (Team/Enterprise admins can disable user-uploaded skills org-wide).
+**1. Build the zip correctly.** The skill folder itself (named `je-validator`, containing `SKILL.md`) needs to be at the top level inside the zip — e.g. `je-validator-skill.zip` → `je-validator/SKILL.md` — not `SKILL.md` sitting bare at the zip root, and not wrapped in an extra outer folder. If you downloaded this repo via GitHub's "Download ZIP" button, it wraps everything in a `je-validator-skill-main` folder first, so you'll need to re-zip:
+- Unzip the GitHub download.
+- Open the extracted folder, select everything inside it (Cmd+A), right-click → **"Compress [n] Items"**.
+- Rename the resulting `Archive.zip` to something clear, e.g. `je-validator-skill.zip`.
 
-Note: in claude.ai the skill runs in a sandboxed environment, so attach your Excel file to the chat rather than pointing the script at a local file path.
+**2. Upload it.** The exact menu location has varied between app versions — check both of these in the app, since one of them will have a Skills section with an upload/+ button:
+- **Customize → Skills**
+- **Settings → Capabilities → Skills**
+
+**3. Enable code execution.** Turn on **Settings → Capabilities → "Create and edit files"** — the skill needs this to actually run the Python script. If the exact label has changed, look for whatever capability governs running code / creating files.
+
+**4. Try it.** Start a new chat, attach one of the files from `test_files/` (e.g. `je_bad_unbalanced.xlsx` or `je_good.xlsx`) or your own journal-entry Excel file, and ask something like *"Validate this journal entry file using the je-validator skill."*
+
+Available on Free/Pro/Max/Ultra/Team/Enterprise plans (Team/Enterprise admins can disable user-uploaded skills org-wide).
+
+Note: in claude.ai / Claude Desktop, the skill runs in a sandboxed environment, so attach your Excel file to the chat rather than pointing the script at a local file path.
 
 ## Output
 
